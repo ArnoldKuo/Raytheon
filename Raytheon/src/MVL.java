@@ -23,15 +23,11 @@ public class MVL implements Occurences{
 		String month = part.substring(5,7); //extracts month
 		String day = part.substring(8, 10); //extracts day
 		
-		int finalDay = Integer.parseInt(day);	//extracted present date from file
-		int finalMonth = Integer.parseInt(month);
-		int finalYear = Integer.parseInt(year);
-		System.out.print("Day: " + finalDay + "\nmonth: " + finalMonth + "\nyear: " + finalYear + "\n");
-		
 		int[] arr = new int[3]; //store date information
-		arr[0] = finalMonth;
-		arr[1] = finalDay;
-		arr[2] = finalYear;
+		arr[0] = Integer.parseInt(month);
+		arr[1] = Integer.parseInt(day);	//extracted present date from file
+		arr[2] = Integer.parseInt(year);
+		System.out.print("Day: " + arr[1] + "\nmonth: " + arr[0] + "\nyear: " + arr[2] + "\n");
 		
 		return arr;
 	}
@@ -55,7 +51,7 @@ public class MVL implements Occurences{
 		return (int) totalMeetings;
 	}
 	public static void main(String[] args) throws FileNotFoundException {
-		TotalMeetings c = new TotalMeetings();
+		MVL c = new MVL();
 		System.out.print(c.meetingCount());
 	}
 
