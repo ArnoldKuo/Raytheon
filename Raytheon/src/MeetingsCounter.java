@@ -26,7 +26,7 @@ import java.util.*;
 				String part = sc.next(); //only one line of text will work
 				String part2 = sc.next(); 
 				String word = sc.next(); //gets the Day of the Week of meetings
-				//sc.close();
+				
 				
 				//text file must have exact order everytime to extract properly
 				String year = part.substring(0, 4); 
@@ -71,6 +71,7 @@ import java.util.*;
 		} catch (Exception e) {
 			System.out.print("Mistake in .txt file");
 		}
+		sc.close();
 		return allDates;
 		
 		
