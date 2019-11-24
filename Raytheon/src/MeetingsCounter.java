@@ -35,25 +35,25 @@ import java.util.*;
 		//gets the week day in numeric form for the third index 
 		switch (word) {
 			case "Sunday":
-				arr[3] = 0;
-				break;
-			case "Monday":
 				arr[3] = 1;
 				break;
-			case "Tuesday":
+			case "Monday":
 				arr[3] = 2;
 				break;
-			case "Wednesday":
+			case "Tuesday":
 				arr[3] = 3;
 				break;
-			case "Thursday":
+			case "Wednesday":
 				arr[3] = 4;
 				break;
-			case "Friday":
+			case "Thursday":
 				arr[3] = 5;
 				break;
-			case "Saturday":
+			case "Friday":
 				arr[3] = 6;
+				break;
+			case "Saturday":
+				arr[3] = 7;
 				break;
 			default:
 				break;
@@ -68,19 +68,17 @@ import java.util.*;
 	 * @return number of holidays
 	 */
 	public int holidays() {
-		// TODO Auto-generated method stub
-		
 		int numHol = 0;
 		boolean check = false;
 		while (check == false) {
 			try {
-				System.out.print("How many holidays do you anticipate on meeting days this year? ");
+				System.out.print("How many holidays do you anticipate on meeting days between given time period? ");
 				Scanner sc = new Scanner(System.in);
 				numHol = sc.nextInt();
 				check = true;
 			}
 			catch(Exception e) {
-				System.out.println("Please specify the number of holidays occuring this year on the meeting day");
+				System.out.println("Please specify the number of holidays occuring this time period on the meeting day");
 			}
 		}
 		
@@ -96,17 +94,15 @@ import java.util.*;
 		int[] date = read(name);
 		//System.out.print("Day: " + date[1] + "\nmonth: " + date[0] + "\nyear: " + date[2] + "\n");
 		Calendar start = day(date[0]-1, date[2]);
-
+		int numHolidays = holidays();
 		Calendar endDay = Calendar.getInstance();
-		endDay.set(date[2], 12, 30);
-	    int meetingCount = 0;
-	    int monthCount = 0;
-	    while (start.compareTo(endDay) < 0) {
-	    	System.out.println(start.compareTo(endDay));
-		    int maxDayInMonth = start.getActualMaximum(Calendar.DAY_OF_MONTH);
-	    	System.out.println("maxDayInMonth " + maxDayInMonth);
-	    	
-		    for (int i = date[1];  i < maxDayInMonth;  i++) {
+		endDay.set(date[2], 12, 30); //end day is December 30th and the given year
+	    int meetingCount = 0; 
+	    int monthCount = 0; //counts how many months gone by
+	    while (start.compareTo(endDay) < 0) { //loops until start == December 31st
+		    
+	    	int maxDayInMonth = start.getActualMaximum(Calendar.DAY_OF_MONTH); //total days in the month
+		    for (int i = date[1];  i < maxDayInMonth;  i++) { //start at date[1] because its given day in text file
 		        start.set(Calendar.DAY_OF_MONTH, i);
 		        
 		        int dayOfWeek = start.get(Calendar.DAY_OF_WEEK);
@@ -114,18 +110,17 @@ import java.util.*;
 		            meetingCount++;
 		        }
 		    }
-//		    if (monthCount == 16) {
-//	    		break;
-//	    	}
+
 		    monthCount++;
-		    start.set(date[2], date[0] + monthCount, 0);
-		    //start = day(date[0] - 1 + monthCount, date[2]);
-		    if (date[1] != 0) {
+		    start.set(date[2], date[0] + monthCount, 0); //goes to following month
+
+		    if (date[1] != 0) { //after a month goes by, reset day to 0
 		    	date[1] = 0;
 		    }
 		    
 	    }
-
+	    
+	    meetingCount -= numHolidays;
 		System.out.print(meetingCount);
 		return meetingCount;
 	}
