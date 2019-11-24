@@ -1,3 +1,7 @@
 Differences between MVL and main product (MeetingsCounter) are that the MVL was more of an approximation 
 since it used a mathematical based approach. The main product was much more accurate using the Java Calendar
-library which will take into account for leap years and such while the MVL can't. 
+library which will take into account for leap years and such, while the MVL can't. MVL can also only take in one
+date at a time in the txt file whereas the main product can take in as many dates as possible each line. 
+
+2018-05-02, 2018-12-31, Wednesday: RETURN 35 - CORRECT (No Holidays)
+2019-01-01, 2019-12-31, Tuesday: RETURN 53 - CORRECT (No Holidays)
