@@ -196,7 +196,7 @@ import java.util.*;
 	public static void main(String[] args) throws FileNotFoundException {
 		MeetingsCounter hi = new MeetingsCounter();
 		int[] dates = hi.totalMeets("test.txt");
-//		for (int i = 0; i < dates.length; i++) {
+///		for (int i = 0; i < dates.length; i++) {
 //			System.out.println(dates[i]);
 //		}
 	}
