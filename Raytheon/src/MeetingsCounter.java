@@ -109,6 +109,7 @@ import java.util.*;
 		int count = 0; //index variable for hashmap
 		int meetingCount = 0;
 		int numHolidays = 0;
+		
 		while (count != date.size()) {
 			Calendar start = day(date.get(count)[0]-1, date.get(count)[2]);
 			numHolidays = holidays();
@@ -117,10 +118,12 @@ import java.util.*;
 		    meetingCount = 0; 
 		    int monthCount = 0; //counts how many months gone by
 		    int startDay = date.get(count)[1]; //first day in the range of the dates
+		    
 		    while (start.compareTo(endDay) < 0) { //loops until start == December 31st
 			    
 		    	int maxDayInMonth = start.getActualMaximum(Calendar.DAY_OF_MONTH); //total days in the month
-			    for (int i = startDay;  i < maxDayInMonth;  i++) { //start at startDay 
+			    
+		    	for (int i = startDay;  i < maxDayInMonth;  i++) { //start at startDay 
 			        start.set(Calendar.DAY_OF_MONTH, i);
 			        
 			        int dayOfWeek = start.get(Calendar.DAY_OF_WEEK);
