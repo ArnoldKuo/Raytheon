@@ -74,7 +74,7 @@ import java.util.*;
 			try {
 				System.out.print("How many holidays do you anticipate on meeting days between given time period? ");
 				Scanner sc = new Scanner(System.in);
-				numHol = sc.nextInt();
+				numHol = sc.nextInt(); //number of holidays between the dates
 				check = true;
 			}
 			catch(Exception e) {
@@ -91,7 +91,7 @@ import java.util.*;
 	 */
 	@Override
 	public int totalMeets(String name) throws FileNotFoundException {
-		int[] date = read(name);
+		int[] date = read(name); //puts day, month, year in array
 		//System.out.print("Day: " + date[1] + "\nmonth: " + date[0] + "\nyear: " + date[2] + "\n");
 		Calendar start = day(date[0]-1, date[2]);
 		int numHolidays = holidays();
@@ -99,6 +99,7 @@ import java.util.*;
 		endDay.set(date[2], 12, 30); //end day is December 30th and the given year
 	    int meetingCount = 0; 
 	    int monthCount = 0; //counts how many months gone by
+	    
 	    while (start.compareTo(endDay) < 0) { //loops until start == December 31st
 		    
 	    	int maxDayInMonth = start.getActualMaximum(Calendar.DAY_OF_MONTH); //total days in the month
@@ -106,7 +107,7 @@ import java.util.*;
 		        start.set(Calendar.DAY_OF_MONTH, i);
 		        
 		        int dayOfWeek = start.get(Calendar.DAY_OF_WEEK);
-		        if (date[3] == dayOfWeek) {
+		        if (date[3] == dayOfWeek) { //int[] date 3rd index is the day of the week in numeric form
 		            meetingCount++;
 		        }
 		    }
@@ -121,7 +122,7 @@ import java.util.*;
 	    }
 	    
 	    meetingCount -= numHolidays;
-		System.out.print(meetingCount);
+		//System.out.print(meetingCount);
 		return meetingCount;
 	}
 	/**
@@ -138,7 +139,6 @@ import java.util.*;
 			c.set(Calendar.MONTH, Calendar.JANUARY);
 			break;
 		case 1:
-			//System.out.print("here");
 			c.set(Calendar.MONTH, Calendar.FEBRUARY);
 			break;
 		case 2:
@@ -178,7 +178,7 @@ import java.util.*;
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		MeetingsCounter hi = new MeetingsCounter();
-		hi.totalMeets("test.txt");
+		System.out.print(hi.totalMeets("test.txt"));
 	}
 	
 
