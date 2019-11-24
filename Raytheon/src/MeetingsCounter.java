@@ -115,11 +115,11 @@ import java.util.*;
 			numHolidays = holidays();
 			Calendar endDay = Calendar.getInstance();
 			endDay.set(date.get(count)[2], 12, 30); //end day is December 30th along with the given year
-		    meetingCount = 0; 
-		    int monthCount = 0; //counts how many months gone by
-		    int startDay = date.get(count)[1]; //first day in the range of the dates
-		    
-		    while (start.compareTo(endDay) < 0) { //loops until start == December 31st
+			meetingCount = 0; 
+			int monthCount = 0; //counts how many months gone by
+			int startDay = date.get(count)[1]; //first day in the range of the dates
+			
+			while (start.compareTo(endDay) < 0) { //loops until start == December 31st
 			    
 		    	int maxDayInMonth = start.getActualMaximum(Calendar.DAY_OF_MONTH); //total days in the month
 			    
