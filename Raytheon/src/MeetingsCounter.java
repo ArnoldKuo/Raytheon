@@ -21,52 +21,55 @@ import java.util.*;
 		int count = 0;
 		
 		HashMap<Integer, int[]> allDates = new HashMap<Integer, int[]>();
-
-		while (sc.hasNextLine()) {
-			String part = sc.next(); //only one line of text will work
-			String part2 = sc.next(); 
-			String word = sc.next(); //gets the Day of the Week of meetings
-			//sc.close();
-			
-			//text file must have exact order everytime to extract properly
-			String year = part.substring(0, 4); 
-			String month = part.substring(5,7); //extracts month
-			String day = part.substring(8, 10); //extracts day
-			
-			int[] arr = new int[4]; //store date information
-			arr[0] = Integer.parseInt(month);
-			arr[1] = Integer.parseInt(day);	//extracted present date from file
-			arr[2] = Integer.parseInt(year);
-			
-			//gets the week day in numeric form for the third index 
-			switch (word) {
-				case "Sunday":
-					arr[3] = 1;
-					break;
-				case "Monday":
-					arr[3] = 2;
-					break;
-				case "Tuesday":
-					arr[3] = 3;
-					break;
-				case "Wednesday":
-					arr[3] = 4;
-					break;
-				case "Thursday":
-					arr[3] = 5;
-					break;
-				case "Friday":
-					arr[3] = 6;
-					break;
-				case "Saturday":
-					arr[3] = 7;
-					break;
-				default:
-					break;
+		try {
+			while (sc.hasNextLine()) {
+				String part = sc.next(); //only one line of text will work
+				String part2 = sc.next(); 
+				String word = sc.next(); //gets the Day of the Week of meetings
+				//sc.close();
+				
+				//text file must have exact order everytime to extract properly
+				String year = part.substring(0, 4); 
+				String month = part.substring(5,7); //extracts month
+				String day = part.substring(8, 10); //extracts day
+				
+				int[] arr = new int[4]; //store date information
+				arr[0] = Integer.parseInt(month);
+				arr[1] = Integer.parseInt(day);	//extracted present date from file
+				arr[2] = Integer.parseInt(year);
+				
+				//gets the week day in numeric form for the third index 
+				switch (word) {
+					case "Sunday":
+						arr[3] = 1;
+						break;
+					case "Monday":
+						arr[3] = 2;
+						break;
+					case "Tuesday":
+						arr[3] = 3;
+						break;
+					case "Wednesday":
+						arr[3] = 4;
+						break;
+					case "Thursday":
+						arr[3] = 5;
+						break;
+					case "Friday":
+						arr[3] = 6;
+						break;
+					case "Saturday":
+						arr[3] = 7;
+						break;
+					default:
+						break;
+				}
+				allDates.put(count, arr);
+				count+=1;
+				size++;
 			}
-			allDates.put(count, arr);
-			count+=1;
-			size++;
+		} catch (Exception e) {
+			System.out.print("Mistake in .txt file");
 		}
 		return allDates;
 		
