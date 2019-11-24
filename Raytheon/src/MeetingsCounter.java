@@ -8,7 +8,7 @@ import java.util.*;
 	 *
 	 */
     class MeetingsCounter implements Counter{
-    	int size = 0;
+    	int size = 0; //used for totalMeets method, used to get number of dates in text file
     /**
      * 
      * @param fileName
