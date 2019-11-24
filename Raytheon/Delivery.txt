@@ -1,0 +1,3 @@
+Differences between MVL and main product (MeetingsCounter) are that the MVL was more of an approximation 
+since it used a mathematical based approach. The main product was much more accurate using the Java Calendar
+library which will take into account for leap years and such while the MVL can't. 
