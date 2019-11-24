@@ -111,7 +111,7 @@ import java.util.*;
 		int numHolidays = 0;
 		
 		while (count != date.size()) {
-			Calendar start = day(date.get(count)[0]-1, date.get(count)[2]);
+		Calendar start = day(date.get(count)[0]-1, date.get(count)[2]);
 			numHolidays = holidays();
 			Calendar endDay = Calendar.getInstance();
 			endDay.set(date.get(count)[2], 12, 30); //end day is December 30th along with the given year
